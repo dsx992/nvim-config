@@ -46,7 +46,11 @@ vim.keymap.set("n", "<leader>ds", vim.diagnostic.open_float, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 require("lspconfig").lua_ls.setup {}
-require("lspconfig").fsautocomplete.setup {}
+
+local util = require "lspconfig/util"
+require("lspconfig").fsautocomplete.setup {
+    root_dir = util.root_pattern("*.fsx", '*.sln', '*.fsproj', '.git'),
+}
 require("lspconfig").omnisharp.setup {}
 require("lspconfig").clangd.setup {}
 
