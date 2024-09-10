@@ -12,6 +12,21 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+vim.api.nvim_create_autocmd("FileType", {
+
+        pattern = "asm",
+
+            command = "setlocal shiftwidth=8 tabstop=8"
+
+        })
+
+vim.api.nvim_create_autocmd("FileType", {
+
+        pattern = "s",
+
+            command = "setlocal shiftwidth=8 tabstop=8"
+
+        })
 -- cursor padding
 vim.opt.scrolloff = 7
 
