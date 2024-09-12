@@ -41,6 +41,7 @@ require("mason-lspconfig").setup({
 vim.keymap.set("n", "<C-x><C-K>", vim.lsp.tagfunc, {})
 vim.keymap.set("n", "<leader>ds", vim.diagnostic.open_float, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 
 require("lspconfig").lua_ls.setup {}
 
