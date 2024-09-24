@@ -1,7 +1,7 @@
 require("config.lazy")
 
 -- force english language
-vim.cmd("language en_US")
+-- vim.cmd("language en_US")
 
 -- linenumbers
 vim.opt.number = true
