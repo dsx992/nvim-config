@@ -1,7 +1,7 @@
 require("config.lazy")
 
 -- force english language
-vim.cmd("language en_US")
+-- vim.cmd("language en_US")
 
 -- linenumbers
 vim.opt.number = true
@@ -35,7 +35,8 @@ vim.keymap.set("n", "<leader>bn", ":bn<Enter>", {})
 vim.keymap.set("n", "<leader>bp", ":bp<Enter>", {})
 
 -- drip
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "solarized"
+vim.o.background = "light"
 -- keybinds
     -- vim
     vim.keymap.set("i", "jj", "<Esc>", {})
