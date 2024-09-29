@@ -35,8 +35,8 @@ vim.keymap.set("n", "<leader>bn", ":bn<Enter>", {})
 vim.keymap.set("n", "<leader>bp", ":bp<Enter>", {})
 
 -- drip
-vim.cmd.colorscheme "solarized"
-vim.o.background = "light"
+vim.cmd.colorscheme "catppuccin"
+-- vim.o.background = "light"
 -- keybinds
     -- vim
     vim.keymap.set("i", "jj", "<Esc>", {})
@@ -46,6 +46,7 @@ vim.o.background = "light"
     local builtin = require('telescope.builtin')
     vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
 
 
