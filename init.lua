@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
         })
 -- cursor padding
-vim.opt.scrolloff = 7
+vim.opt.scrolloff = 4
 
 -- buffer switching
 vim.keymap.set("n", "<leader>bn", ":bn<Enter>", {})
