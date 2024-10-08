@@ -1,7 +1,10 @@
 require("config.lazy")
 
+vim.o.splitright = true
+
 -- force english language
 -- vim.cmd("language en_US")
+vim.opt.colorcolumn = "80"
 
 -- linenumbers
 vim.opt.number = true
