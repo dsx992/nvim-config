@@ -5,6 +5,7 @@ vim.o.splitright = true
 -- force english language
 -- vim.cmd("language en_US")
 vim.opt.colorcolumn = "80"
+vim.opt.showtabline=2
 
 -- linenumbers
 vim.opt.number = true
@@ -36,6 +37,10 @@ vim.opt.scrolloff = 4
 -- buffer switching
 vim.keymap.set("n", "<leader>bn", ":bn<Enter>", {})
 vim.keymap.set("n", "<leader>bp", ":bp<Enter>", {})
+
+vim.keymap.set("n", "tt", ":Tex<Enter>", {})
+vim.keymap.set("n", "<leader>tn", ":Tex<Enter>", {})
+vim.keymap.set("n", "<leader>ll", ":Lex<Enter>", {})
 
 -- drip
 vim.cmd.colorscheme "catppuccin"
