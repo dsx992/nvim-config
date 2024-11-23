@@ -70,8 +70,9 @@ require("lspconfig").lua_ls.setup {}
 
 local util = require "lspconfig/util"
 require("lspconfig").fsautocomplete.setup {
-    root_dir = util.root_pattern("*.fsx", '*.sln', '*.fsproj', '.git'),
+    root_dir = util.root_pattern("*.fs", "*.fsx", '*.sln', '*.fsproj', '.git'),
 }
 require("lspconfig").omnisharp.setup {}
 require("lspconfig").clangd.setup {}
+require("lspconfig").pylsp.setup {}
 
