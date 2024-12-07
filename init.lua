@@ -31,6 +31,12 @@ vim.api.nvim_create_autocmd("FileType", {
             command = "setlocal shiftwidth=8 tabstop=8"
 
         })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "md",
+    command = "setlocal textwidth=80"
+})
+
 -- cursor padding
 vim.opt.scrolloff = 4
 
