@@ -6,6 +6,7 @@ vim.o.splitright = true
 -- vim.cmd("language en_US")
 vim.opt.colorcolumn = "80"
 vim.opt.showtabline=2
+vim.opt.smartcase = true
 
 -- linenumbers
 vim.opt.number = true
@@ -17,19 +18,13 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.api.nvim_create_autocmd("FileType", {
-
         pattern = "asm",
-
             command = "setlocal shiftwidth=8 tabstop=8"
-
         })
 
 vim.api.nvim_create_autocmd("FileType", {
-
         pattern = "s",
-
             command = "setlocal shiftwidth=8 tabstop=8"
-
         })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -50,17 +45,19 @@ vim.keymap.set("n", "<leader>ll", ":Lex<Enter>", {})
 
 -- drip
 vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "retrobox"
 -- vim.o.background = "light"
--- keybinds
-    -- vim
-    vim.keymap.set("i", "jj", "<Esc>", {})
-    vim.keymap.set("t", "jj", "<C-\\><C-n>", {})
 
-    -- telescope
-    local builtin = require('telescope.builtin')
-    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+-- keybinds
+-- vim
+vim.keymap.set("i", "jj", "<Esc>", {})
+vim.keymap.set("t", "jj", "<C-\\><C-n>", {})
+
+-- telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
 
 
