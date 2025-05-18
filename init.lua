@@ -44,7 +44,8 @@ vim.keymap.set("n", "<leader>tn", ":Tex<Enter>", {})
 vim.keymap.set("n", "<leader>ll", ":Lex<Enter>", {})
 
 -- drip
-vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "rose-pine-dawn"
 -- vim.cmd.colorscheme "retrobox"
 -- vim.o.background = "light"
 
