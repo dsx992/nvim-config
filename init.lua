@@ -1,87 +1,50 @@
-require("config.lazy")
-
-vim.o.splitright = true
-
--- force english language
--- vim.cmd("language en_US")
-vim.opt.colorcolumn = "80"
-vim.opt.showtabline=2
-vim.opt.smartcase = true
-
--- linenumbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- tabbing
-vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-
-vim.api.nvim_create_autocmd("FileType", {
-        pattern = "asm",
-            command = "setlocal shiftwidth=8 tabstop=8"
-        })
-
-vim.api.nvim_create_autocmd("FileType", {
-        pattern = "s",
-            command = "setlocal shiftwidth=8 tabstop=8"
-        })
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "md",
-    command = "setlocal textwidth=80"
-})
-
--- cursor padding
-vim.opt.scrolloff = 4
-
--- buffer switching
-vim.keymap.set("n", "<leader>bn", ":bn<Enter>", {})
-vim.keymap.set("n", "<leader>bp", ":bp<Enter>", {})
-
-vim.keymap.set("n", "tt", ":Tex<Enter>", {})
-vim.keymap.set("n", "<leader>tn", ":Tex<Enter>", {})
-vim.keymap.set("n", "<leader>ll", ":Lex<Enter>", {})
-
--- drip
--- vim.cmd.colorscheme "catppuccin"
-vim.cmd.colorscheme "rose-pine-dawn"
--- vim.cmd.colorscheme "retrobox"
--- vim.o.background = "light"
-
--- keybinds
--- vim
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 0
+vim.o.number = true
+vim.o.scrolloff = 0
+vim.o.colorcolumn = "80"
+vim.o.showtabline=2
+vim.cmd.colorscheme "wildcharm"
+vim.o.background="light"
 vim.keymap.set("i", "jj", "<Esc>", {})
 vim.keymap.set("t", "jj", "<C-\\><C-n>", {})
+vim.cmd([[
+    hi statusline guibg=NONE
+    hi statuslineNC guibg=NONE
+    set shortmess+=I
+]])
 
--- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.pack.add({
+    { src = "https://github.com/lervag/vimtex"},
+    { src = "https://github.com/BeneCollyridam/futhark-vim"},
+    { src = "https://github.com/neovim/nvim-lspconfig"},
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter",
+      version = "main" },
+})
 
-
-
--- LSP
-require("mason").setup()
--- require("mason-lspconfig").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" , "csharp_ls" },
+vim.filetype.add({
+    extension = {
+        fut = "futhark"
     }
-)
+})
 
-vim.keymap.set("n", "<C-x><C-K>", vim.lsp.tagfunc, {})
-vim.keymap.set("n", "<leader>ds", vim.diagnostic.open_float, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+vim.g.vimtex_view_method = "zathura"
 
-require("lspconfig").lua_ls.setup {}
+require("nvim-treesitter").setup({
+    ensure_installed = {"c", "lua", "markdown", "markdown_inline", "fsharp" }
+})
 
-local util = require "lspconfig/util"
-require("lspconfig").fsautocomplete.setup {
-    root_dir = util.root_pattern("*.fs", "*.fsx", '*.sln', '*.fsproj', '.git'),
-}
-require("lspconfig").omnisharp.setup {}
-require("lspconfig").clangd.setup {}
-require("lspconfig").pylsp.setup {}
+vim.lsp.enable({
+    "lua_ls",
+    "clangd",
+    "fsautocomplete",
+    "futhark_lsp",
+})
 
+vim.lsp.config("futhark_lsp", {
+    root_markers = {'.git', '.fut'},
+    on_attach = {
+        vim.lsp.semantic_tokens.enable(not vim.lsp.semantic_tokens.is_enabled())
+    }
+})
